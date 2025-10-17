@@ -1,10 +1,12 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { events } from "../constants/events";
 import { sponsors } from "../constants/sponsors";
 import { waveformImage } from "../constants/assets";
 
 // Reusable background patterns
-const BackgroundPattern = ({ className = "" }: { className?: string }) => (
+export const BackgroundPattern = ({ className = "" }: { className?: string }) => (
   <>
     {/* Waveform main background */}
     <div 
@@ -143,8 +145,8 @@ export function HeroSection() {
                   {/* Speakers Row */}
                   <div className="flex flex-wrap gap-4 mt-8 max-w-4xl">
                     {event.speakers.map((speaker, speakerIdx) => (
-                      <div key={speakerIdx} className="group cursor-pointer flex-1 min-w-0">
-                        <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100">
+                      <div key={speakerIdx} className="group cursor-pointer w-32">
+                        <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
                           {/* Subtle grid overlay */}
                           <div className="absolute inset-0 z-10" style={{
                             backgroundImage: `repeating-linear-gradient(
@@ -179,6 +181,29 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Host Event Section */}
+        <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative mt-8">
+          <BackgroundPattern />
+          
+          <div className="relative z-10 text-center">
+            <h2 className="text-3xl md:text-4xl mb-6 text-black">
+              WANT TO HOST AN EVENT?
+            </h2>
+            
+            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-8">
+              Join Victoria Tech Week by hosting your own event. Connect with founders, investors, and innovators in our thriving tech community.
+            </p>
+
+            <Button 
+              variant="outline" 
+              className="border-black text-black hover:bg-black hover:text-white"
+              onClick={() => window.location.href = 'mailto:alhwyn@alhwyn.com?subject=Host an Event at Victoria Tech Week'}
+            >
+              GET IN TOUCH
+            </Button>
           </div>
         </div>
       </div>
