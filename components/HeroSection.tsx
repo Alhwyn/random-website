@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { events } from "../constants/events";
 import { sponsors } from "../constants/sponsors";
 import { waveformImage } from "../constants/assets";
+import { StayUpdated } from "./StayUpdated";
 
 // Reusable background patterns
 export const BackgroundPattern = ({ className = "" }: { className?: string }) => (
@@ -69,9 +70,9 @@ export function HeroSection() {
                 Victoria Tech Week: Oct 13 to Oct 19
               </p>
 
-              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white mt-4">
-                VIEW CALENDAR
-              </Button>
+              <div className="mt-4">
+                <StayUpdated />
+              </div>
             </div>
 
             {/* Right: Waveform Visual */}
