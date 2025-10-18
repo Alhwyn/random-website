@@ -8,6 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-zinc-900 text-white relative overflow-hidden py-8">
       <BackgroundPattern />
+      
 
       <div className="relative z-10 max-w-[1800px] mx-auto px-8 py-8">
 

@@ -46,12 +46,12 @@ export function StayUpdated() {
           onChange={(e) => setEmail(e.target.value)}
           required
           disabled={isSubmitting}
-          className="flex-1 border-black/30 focus-visible:ring-black"
+          className="flex-1 border-2 border-black focus-visible:ring-0 focus-visible:border-black"
         />
         <Button 
           type="submit"
           disabled={isSubmitting || !email}
-          className="bg-black text-white hover:bg-black/80 border-black"
+          className="bg-black text-white hover:bg-black/80 border-black disabled:bg-black disabled:text-white disabled:opacity-70"
         >
           {isSubmitting ? "..." : "NOTIFY ME"}
         </Button>
