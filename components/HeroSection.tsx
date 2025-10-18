@@ -119,7 +119,7 @@ export function HeroSection() {
 
         {/* Featured Events Section */}
         <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative">
-          <BackgroundPattern />
+    
 
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl mb-12 text-black">
