@@ -2,7 +2,7 @@ export const events = [
   {
     id: 1,
     company: "TENFOLD",
-    date: "MONDAY, OCT 6",
+    date: "MONDAY, NOV 17",
     title: "TENFOLD TALKS",
     speakers: [
       {
@@ -15,7 +15,7 @@ export const events = [
   {
     id: 3,
     company: "VIATEC",
-    date: "MONDAY, OCT 13",
+    date: "MONDAY, NOV 24",
     title: "Prompt Victoria Conference",
     speakers: [
       {

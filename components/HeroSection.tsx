@@ -20,23 +20,23 @@ export const BackgroundPattern = ({ className = "" }: { className?: string }) =>
       }}
     />
     
-    {/* Grid texture overlay */}
+    {/* Subtle grid overlay */}
     <div 
-      className={`absolute inset-0 opacity-10 ${className}`}
+      className={`absolute inset-0 opacity-20 ${className}`}
       style={{
         backgroundImage: `repeating-linear-gradient(
           0deg,
-          rgba(0, 0, 0, 0.03) 0px,
-          rgba(0, 0, 0, 0.03) 1px,
-          transparent 1px,
-          transparent 2px
+          transparent 0px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.1) 2px,
+          rgba(0, 0, 0, 0.1) 3px
         ),
         repeating-linear-gradient(
           90deg,
-          rgba(0, 0, 0, 0.03) 0px,
-          rgba(0, 0, 0, 0.03) 1px,
-          transparent 1px,
-          transparent 2px
+          transparent 0px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.1) 2px,
+          rgba(0, 0, 0, 0.1) 3px
         )`
       }}
     />
@@ -49,12 +49,24 @@ export function HeroSection() {
       <BackgroundPattern />
 
       <div className="relative z-10 max-w-[1800px] mx-auto px-8 py-8">
-        {/* Main Hero Container with Border */}
-        <div className="border-2 border-black/20 p-8 md:p-12 mb-8">
+        {/* Main Hero Container with Border and Background */}
+        <div className="border-2 border-black/20 p-8 md:p-12 mb-8 relative min-h-[80vh] flex items-center overflow-hidden">
+          {/* Full Page Background Image */}
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: `url('${waveformImage}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+          
+          {/* Content with z-index */}
+          <div className="relative z-10 w-full">
 
-          {/* Hero Content Grid */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Text Content */}
+          {/* Hero Content - Single Column */}
+          <div className="max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight">
                 VICTORIA&apos;S 
@@ -67,39 +79,17 @@ export function HeroSection() {
               </p>
 
               <p className="text-gray-700 text-sm">
-                Victoria Tech Week: Oct 13 to Oct 19
+                Victoria Tech Week: Nov 20 to Nov 26
               </p>
 
               <div className="mt-4">
                 <StayUpdated />
               </div>
             </div>
-
-            {/* Right: Waveform Visual */}
-            <div className="relative">
-              <div className="relative border-2 border-dashed border-black/40 p-8 min-h-[400px] bg-gradient-to-br from-gray-50 to-white">
-                {/* Large waveform image */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={waveformImage} 
-                  alt="Victoria Tech Week Waveform" 
-                  className="w-full h-full object-contain opacity-80 mix-blend-multiply"
-                />
-                
-                {/* Overlay labels */}
-                <div className="absolute top-4 left-4 bg-white/90 text-black px-3 py-2 text-sm font-medium border border-black/10">
-                  VICTORIA TECH WEEK
-                </div>
-                <div className="absolute bottom-4 right-4 bg-black text-white px-3 py-2 text-sm font-medium">
-                  OCT 13-19, 2025
-                </div>
-
-              </div>
-            </div>
           </div>
 
           {/* Sponsors Section */}
-          <div className="mt-16 pt-8 border-t border-black/20">
+          <div className="mt-16 pt-8 border-t border-black/20 relative z-10">
             <div className="flex flex-wrap items-center gap-8 text-xs">
               <span className="text-gray-600">Platinum Sponsors</span>
               {sponsors.platinum.map((sponsor, idx) => (
@@ -116,11 +106,21 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
 
         {/* Featured Events Section */}
-        <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative">
-    
-
+        <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative overflow-hidden">
+          {/* Bob.png background for Featured Events */}
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `url('/bob.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'top center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+          
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl mb-12 text-black">
               FEATURED EVENTS
