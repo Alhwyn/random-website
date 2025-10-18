@@ -190,7 +190,7 @@ export const MediaBetweenText = forwardRef<
           {firstText}
         </TextComponent>
         <motion.div
-          className={cn("relative", mediaContainerClassName)}
+          className={mediaContainerClassName}
           variants={animationVariants}
           initial="initial"
           animate={shouldAnimate ? "animate" : "initial"}
@@ -211,8 +211,9 @@ export const MediaBetweenText = forwardRef<
               src={mediaUrl}
               alt={alt || `${firstText} ${secondText}`}
               className="w-full h-full object-cover"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              width={128}
+              height={128}
+              sizes="(max-width: 768px) 64px, (max-width: 1200px) 96px, 128px"
             />
           )}
         </motion.div>
