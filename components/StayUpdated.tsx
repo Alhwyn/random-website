@@ -30,7 +30,7 @@ export function StayUpdated() {
     return (
       <div className="flex flex-col sm:flex-row gap-2 max-w-md">
         <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 px-4 py-2 text-sm rounded">
-          ✓ Thanks! We'll keep you updated
+          ✓ Thanks! We&apos;ll keep you updated
         </div>
       </div>
     );

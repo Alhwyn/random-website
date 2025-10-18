@@ -2,6 +2,7 @@
 
 import { ElementType, forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { motion, useInView, UseInViewOptions, Variants } from "motion/react"
+import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
@@ -158,10 +159,8 @@ export const MediaBetweenText = forwardRef<
     const componentRef = useRef<HTMLDivElement>(null)
     const [isAnimating, setIsAnimating] = useState(false)
 
-    const isInView =
-      triggerType === "inView"
-        ? useInView(componentRef || containerRef, useInViewOptionsProp)
-        : false
+    const inViewResult = useInView(componentRef || containerRef, useInViewOptionsProp)
+    const isInView = triggerType === "inView" ? inViewResult : false
     const [isHovered, setIsHovered] = useState(false)
 
     useImperativeHandle(ref, () => ({
@@ -191,7 +190,7 @@ export const MediaBetweenText = forwardRef<
           {firstText}
         </TextComponent>
         <motion.div
-          className={mediaContainerClassName}
+          className={cn("relative", mediaContainerClassName)}
           variants={animationVariants}
           initial="initial"
           animate={shouldAnimate ? "animate" : "initial"}
@@ -208,10 +207,12 @@ export const MediaBetweenText = forwardRef<
               <source src={mediaUrl} type="video/mp4" />
             </video>
           ) : (
-            <img
+            <Image
               src={mediaUrl}
               alt={alt || `${firstText} ${secondText}`}
               className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
         </motion.div>
