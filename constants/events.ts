@@ -2,7 +2,7 @@ export const events = [
   {
     id: 1,
     company: "TENFOLD",
-    date: "MONDAY, NOV 17",
+    date: "TO BE ANNOUNCED",
     title: "TENFOLD TALKS",
     speakers: [
       {

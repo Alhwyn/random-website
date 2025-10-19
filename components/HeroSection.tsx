@@ -73,13 +73,10 @@ export function HeroSection() {
                   <br />
                   TECH WEEK
                 </h1>
-                
-                <p className="text-gray-600 text-sm md:text-base max-w-lg">
-                  a16z presents Tech Week 2025, bringing together the top founders, funds, and companies around the globe.
-                </p>
+
 
                 <p className="text-gray-700 text-sm">
-                  Victoria Tech Week: Nov 20 to Nov 26
+                  Victoria Tech Week: Nov 17-21
                 </p>
 
                 <div className="mt-4">
