@@ -26,7 +26,7 @@ export function Footer() {
             alt="TENFOLD logo"
             triggerType="inView"
             className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-stone-200 tracking-wider flex items-center"
-            mediaContainerClassName="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mx-2 sm:mx-4 rounded-lg overflow-hidden"
+            mediaContainerClassName="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 mx-2 sm:mx-4 overflow-hidden"
             animationVariants={{
               initial: { width: 0, opacity: 0 },
               animate: {

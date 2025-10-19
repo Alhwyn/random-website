@@ -68,15 +68,15 @@ export function HeroSection() {
             {/* Hero Content - Single Column */}
             <div className="max-w-2xl">
               <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold">
-                  VICTORIA&apos;S 
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-[#484848]">
+                  VICTORIA
                   <br />
                   TECH WEEK
                 </h1>
 
 
                 <p className="text-gray-700 text-sm">
-                  Victoria Tech Week: Nov 17-21
+                  November 17-21, 2025
                 </p>
 
                 <div className="mt-4">
