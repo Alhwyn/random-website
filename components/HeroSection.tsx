@@ -49,9 +49,9 @@ export function HeroSection() {
     <div className="min-h-screen bg-white text-black relative">
       <BackgroundPattern />
 
-      <div className="relative z-10 max-w-[1800px] mx-auto px-8 py-8">
+      <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Main Hero Container with Border and Background */}
-        <div className="border-2 border-black/20 p-8 md:p-12 mb-8 relative min-h-[80vh] overflow-hidden">
+        <div className="border-2 border-black/20 p-4 sm:p-8 md:p-12 mb-8 relative min-h-[70vh] sm:min-h-[80vh] overflow-hidden">
           {/* Full Page Background Image */}
           <div 
             className="absolute inset-0 opacity-30"
@@ -64,11 +64,11 @@ export function HeroSection() {
           />
           
           {/* Content with z-index - Positioned for space */}
-          <div className="relative z-10 w-full flex items-center min-h-[70vh]">
+          <div className="relative z-10 w-full flex items-center min-h-[60vh] sm:min-h-[70vh]">
             {/* Hero Content - Single Column */}
             <div className="max-w-2xl">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <div className="space-y-4 sm:space-y-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold">
                   VICTORIA&apos;S 
                   <br />
                   TECH WEEK
@@ -115,7 +115,7 @@ export function HeroSection() {
         </div>
 
         {/* Featured Events Section */}
-        <div id="events" className="border-2 border-black/20 text-black p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
+        <div id="events" className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
           {/* Bob.png background for Featured Events */}
           <div 
             className="absolute inset-0 opacity-5"
@@ -128,31 +128,31 @@ export function HeroSection() {
           />
           
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl mb-12 text-black">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-12 text-black font-bold">
               FEATURED EVENTS
             </h2>
             
-            <div className="space-y-16">
+            <div className="space-y-12 sm:space-y-16">
               {events.map((event) => (
-                <div key={event.id} className="space-y-6">
+                <div key={event.id} className="space-y-4 sm:space-y-6">
                   {/* Event Header */}
-                  <div className="border border-black/30 px-4 py-2 inline-block">
-                    <div className="flex items-center gap-4 text-sm">
+                  <div className="border border-black/30 px-3 sm:px-4 py-2 inline-block">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm">
                       <span className="text-black font-medium">{event.company}</span>
-                      <span className="text-gray-600">•</span>
+                      <span className="text-gray-600 hidden sm:inline">•</span>
                       <span className="text-gray-600">{event.date}</span>
                     </div>
                   </div>
                   
                   {/* Event Title */}
-                  <h3 className="text-2xl md:text-3xl text-black leading-tight max-w-4xl">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl text-black leading-tight max-w-4xl">
                     {event.title}
                   </h3>
                   
                   {/* Speakers Row */}
-                  <div className="flex flex-wrap gap-4 mt-8 max-w-4xl">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 max-w-4xl">
                     {event.speakers.map((speaker, speakerIdx) => (
-                      <div key={speakerIdx} className="group cursor-pointer w-32">
+                      <div key={speakerIdx} className="group cursor-pointer w-full lg:w-32">
                         <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
                           {/* Subtle grid overlay */}
                           <div className="absolute inset-0 z-10" style={{
@@ -179,7 +179,7 @@ export function HeroSection() {
         </div>
 
         {/* Host Event Section */}
-        <div id="sponsor" className="border-2 border-black/20 text-black p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
+        <div id="sponsor" className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
           {/* Sponsor.png background */}
           <div 
             className="absolute inset-0 opacity-20"
@@ -192,11 +192,11 @@ export function HeroSection() {
           />
           
           <div className="relative z-10 text-center">
-            <h2 className="text-3xl md:text-4xl mb-6 text-black">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 text-black font-bold">
               WANT TO HOST AN EVENT OR SPONSOR?
             </h2>
 
-            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-8">
+            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
               Join Victoria Tech Week by hosting your own event. Connect with founders, investors, and innovators in our thriving tech community.
             </p>
             

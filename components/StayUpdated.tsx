@@ -29,7 +29,7 @@ export function StayUpdated() {
   if (submitted) {
     return (
       <div className="flex flex-col sm:flex-row gap-2 max-w-md">
-        <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 px-4 py-2 text-sm rounded">
+        <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 px-3 sm:px-4 py-2 text-sm rounded text-center">
           ✓ Thanks! We&apos;ll keep you updated
         </div>
       </div>
@@ -38,20 +38,20 @@ export function StayUpdated() {
 
   return (
     <div className="space-y-3">
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row  max-w-md">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md">
         <Input
           type="email"
-          placeholder="STAY UPDATED "
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           disabled={isSubmitting}
-          className="flex-1 border-2 border-black focus-visible:ring-0 focus-visible:border-black"
+          className="flex-1 border-2 border-black focus-visible:ring-0 focus-visible:border-black text-sm sm:text-base px-3 py-2"
         />
         <Button 
           type="submit"
           disabled={isSubmitting || !email}
-          className="bg-black text-white hover:bg-black/80 border-black disabled:bg-black disabled:text-white disabled:opacity-70"
+          className="bg-black text-white hover:bg-black/80 border-black disabled:bg-black disabled:text-white disabled:opacity-70 px-4 sm:px-6 py-2 text-sm sm:text-base font-medium whitespace-nowrap"
         >
           {isSubmitting ? "..." : "NOTIFY ME"}
         </Button>
