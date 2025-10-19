@@ -118,7 +118,7 @@ export function HeroSection() {
         </div>
 
         {/* Featured Events Section */}
-        <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative overflow-hidden">
+        <div id="events" className="border-2 border-black/20 text-black p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
           {/* Bob.png background for Featured Events */}
           <div 
             className="absolute inset-0 opacity-5"
@@ -182,17 +182,28 @@ export function HeroSection() {
         </div>
 
         {/* Host Event Section */}
-        <div className="border-2 border-black/20 bg-white text-black p-8 md:p-12 relative mt-8">
-          <BackgroundPattern />
+        <div id="sponsor" className="border-2 border-black/20 text-black p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
+          {/* Sponsor.png background */}
+          <div 
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: "url('/sponsor2.png')",
+              backgroundSize: '100%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
           
           <div className="relative z-10 text-center">
             <h2 className="text-3xl md:text-4xl mb-6 text-black">
-              WANT TO HOST AN EVENT?
+              WANT TO HOST AN EVENT OR SPONSOR?
             </h2>
-            
+
             <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-8">
               Join Victoria Tech Week by hosting your own event. Connect with founders, investors, and innovators in our thriving tech community.
             </p>
+            
+ 
 
             <Button 
               variant="outline" 
@@ -201,6 +212,7 @@ export function HeroSection() {
             >
               GET IN TOUCH
             </Button>
+            
           </div>
         </div>
       </div>

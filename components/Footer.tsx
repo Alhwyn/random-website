@@ -5,9 +5,9 @@ import { Button } from "./ui/button";
 
 export function Footer() {
   return (
-    <footer className="text-white relative overflow-hidden py-8 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/footer.png)' }}>
+    <footer id="contact" className="text-white relative overflow-hidden py-8 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/footer.png)' }}>
       {/* Dark overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/70" />
       
 
       <div className="relative z-10 max-w-[1800px] mx-auto px-8 py-8">
