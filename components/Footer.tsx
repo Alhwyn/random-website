@@ -11,8 +11,11 @@ export function Footer() {
       
 
       <div className="relative z-10 max-w-[1800px] mx-auto px-8 py-8">
-
-                {/* Powered by text */}
+        <div className="text-center mb-6">
+          <p className="text-sm text-stone-300/90 font-light tracking-wide">
+            POWERED BY
+          </p>
+        </div>
         
 
         {/* Main TENFOLD Heading with MediaBetweenText */}
