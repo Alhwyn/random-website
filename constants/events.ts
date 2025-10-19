@@ -15,7 +15,7 @@ export const events = [
   {
     id: 3,
     company: "VIATEC",
-    date: "MONDAY, NOV 24",
+    date: "NOV 21",
     title: "Prompt Victoria Conference",
     speakers: [
       {
