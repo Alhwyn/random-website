@@ -175,6 +175,17 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
+            
+            {/* Show More Events Button */}
+            <div className="text-center mt-8 sm:mt-12">
+              <Button 
+                variant="default"
+                className="bg-black text-white hover:bg-gray-800 px-8 py-3 text-sm font-medium"
+                onClick={() => window.location.href = '/event'}
+              >
+                SHOW MORE EVENTS
+              </Button>
+            </div>
           </div>
         </div>
 
