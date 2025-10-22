@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -16,6 +18,45 @@ export function Navbar() {
     setIsMenuOpen(false); // Close menu after clicking
   };
 
+  const navigateToPage = (path: string) => {
+    router.push(path);
+    setIsMenuOpen(false); // Close menu after clicking
+  };
+
+  const navigateToMainPageSection = (sectionId: string) => {
+    // If we're already on the main page, just scroll to the section
+    if (window.location.pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      // Navigate to main page with hash
+      router.push(`/#${sectionId}`);
+    }
+    setIsMenuOpen(false);
+  };
+
+  // Handle scrolling to section when page loads with hash
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        // Small delay to ensure page has loaded
+        setTimeout(() => {
+          scrollToSection(hash);
+        }, 100);
+      }
+    };
+
+    // Handle initial load
+    handleHashScroll();
+    
+    // Handle hash changes
+    window.addEventListener('hashchange', handleHashScroll);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll);
+    };
+  }, []);
+
   return (
     <nav className="bg-white border-b-2 border-black/20 sticky top-0 z-50">
       <div className="w-full">
@@ -23,17 +64,20 @@ export function Navbar() {
         <div className="hidden md:flex">
           {/* Victoria Tech Week - Branded Section */}
           <div className="bg-white text-black border-r-2 border-black/20 min-w-[200px]">
-            <div className="px-6 py-4 text-center">
+            <button 
+              onClick={() => navigateToPage('/')}
+              className="w-full px-6 py-4 text-center hover:bg-gray-50 transition-colors"
+            >
               <div className="font-bold text-sm leading-tight">
                 Victoria<br/>Tech Week
               </div>
-            </div>
+            </button>
           </div>
           
           {/* EVENTS */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
-              onClick={() => scrollToSection('events')}
+              onClick={() => navigateToPage('/event')}
               className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               EVENTS
@@ -43,7 +87,7 @@ export function Navbar() {
           {/* SPONSOR */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
-              onClick={() => scrollToSection('sponsor')}
+              onClick={() => navigateToMainPageSection('sponsor')}
               className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               SPONSOR
@@ -53,7 +97,7 @@ export function Navbar() {
           {/* HOST EVENT */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
-              onClick={() => scrollToSection('sponsor')}
+              onClick={() => navigateToMainPageSection('sponsor')}
               className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               HOST EVENT
@@ -63,7 +107,7 @@ export function Navbar() {
           {/* CONTACT */}
           <div className="flex-1">
             <button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => navigateToMainPageSection('contact')}
               className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               CONTACT
@@ -75,9 +119,12 @@ export function Navbar() {
         <div className="md:hidden">
           <div className="flex items-center justify-between px-4 py-3">
             {/* Brand */}
-            <div className="font-bold text-sm leading-tight">
+            <button 
+              onClick={() => navigateToPage('/')}
+              className="font-bold text-sm leading-tight hover:text-gray-600 transition-colors"
+            >
               Victoria Tech Week
-            </div>
+            </button>
             
             {/* Hamburger Menu Button */}
             <button 
@@ -96,25 +143,25 @@ export function Navbar() {
           {/* Mobile Menu Dropdown */}
           <div className={`${isMenuOpen ? 'block' : 'hidden'} border-t-2 border-black/20 bg-white`}>
             <button 
-              onClick={() => scrollToSection('events')}
+              onClick={() => navigateToPage('/event')}
               className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               EVENTS
             </button>
             <button 
-              onClick={() => scrollToSection('sponsor')}
+              onClick={() => navigateToMainPageSection('sponsor')}
               className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               SPONSOR
             </button>
             <button 
-              onClick={() => scrollToSection('sponsor')}
+              onClick={() => navigateToMainPageSection('sponsor')}
               className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               HOST EVENT
             </button>
             <button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => navigateToMainPageSection('contact')}
               className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               CONTACT

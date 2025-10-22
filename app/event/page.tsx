@@ -356,6 +356,30 @@ export default function EventCalendar() {
         <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           {/* Header Section */}
           <div className="border-2 border-black/20 p-4 sm:p-8 md:p-12 mb-8 relative overflow-hidden bg-white">
+            {/* Full Page Background Image */}
+            <div 
+              className="absolute inset-0 w-full h-full opacity-30"
+              style={{
+                backgroundImage: "url('/boat.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'local'
+              }}
+            />
+            
+            {/* Additional background fill for any gaps */}
+            <div 
+              className="absolute inset-0 w-full h-full opacity-20"
+              style={{
+                backgroundImage: "url('/boat.png')",
+                backgroundSize: 'contain',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'repeat'
+              }}
+            />
+            
+            {/* Content with z-index */}
             <div className="relative z-10 text-center">
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight font-bold text-[#484848]">
                 EVENTS
