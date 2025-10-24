@@ -171,6 +171,30 @@ export const calendarEvents: CalendarEvent[] = [
     isVirtual: false,
     maxAttendees: 50,
     tags: ["art", "installation", "poetry", "projection", "multi-sensory", "drop-in"]
+  },
+  {
+    id: 6,
+    title: "Tour of Reliable Controls Manufacturing Facility",
+    description: "VI ASHRAE and iWIST invite you to a dynamic evening of connection and discovery at Reliable Controls. Explore their manufacturing facility and learn about automation and production processes in the building controls industry.",
+    company: "ASHRAE Vancouver Island",
+    startDate: "2025-11-20",
+    endDate: "2025-11-20",
+    startTime: "15:00",
+    endTime: "18:30",
+    location: "Reliable Controls, 120 Hallowell Road Victoria, BC V9A 7K2 Canada",
+    category: "Workshop",
+    speakers: [
+      {
+        name: "ASHRAE Vancouver Island",
+        role: "Event Organizers",
+        company: "ASHRAE Vancouver Island",
+        image: "/speakers/placeholder.jpeg"
+      }
+    ],
+    registrationUrl: "https://www.eventbrite.ca/e/tour-of-reliable-controls-manufacturing-facility-tickets-1839415714919",
+    isVirtual: false,
+    maxAttendees: 100,
+    tags: ["manufacturing", "automation", "facility-tour", "production-process", "reliable-controls", "building-controls", "engineering"]
   }
 ];
 

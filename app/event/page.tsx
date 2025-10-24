@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BackgroundPattern } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { calendarEvents, CalendarEvent } from "@/constants/calendarEvents";
+import { Link } from "lucide-react";
 
 // Type definitions for the calendar display
 interface DisplayEvent {
@@ -26,6 +27,7 @@ interface DisplayEvent {
   location: string;
   category: string;
   color: string;
+  registrationUrl?: string;
 }
 
 // Transform imported calendar events to display format
@@ -66,7 +68,8 @@ const transformCalendarEvent = (event: CalendarEvent): DisplayEvent => {
     },
     location: event.location,
     category: event.category.toLowerCase(),
-    color: getCategoryColor(event.category)
+    color: getCategoryColor(event.category),
+    registrationUrl: event.registrationUrl
   };
 };
 
@@ -101,6 +104,30 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const dayNumbers = [17, 18, 19, 20, 21];
 
 export default function EventCalendar() {
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+
+  const handleDayClick = (day: string) => {
+    setSelectedDay(selectedDay === day ? null : day);
+  };
+
+  // Filter events based on selected day
+  const getFilteredEvents = () => {
+    if (!selectedDay) return weekCalendarEvents;
+    
+    const filtered: typeof weekCalendarEvents = {
+      Monday: [],
+      Tuesday: [],
+      Wednesday: [],
+      Thursday: [],
+      Friday: []
+    };
+    
+    filtered[selectedDay as keyof typeof weekCalendarEvents] = weekCalendarEvents[selectedDay as keyof typeof weekCalendarEvents];
+    return filtered;
+  };
+
+  const filteredEvents = getFilteredEvents();
+
   return (
     <>
       <Navbar />
@@ -145,10 +172,28 @@ export default function EventCalendar() {
           <div className="border-2 border-black/20 bg-gray-100 mb-8">
             <div className="grid grid-cols-5 gap-0">
               {days.map((day, index) => (
-                <div key={day} className={`p-4 text-center ${index < days.length - 1 ? 'border-r border-black/20' : ''}`}>
-                  <div className="text-gray-600 text-sm uppercase font-medium">{day.slice(0, 3)}</div>
-                  <div className="text-2xl font-bold text-black">{dayNumbers[index]}</div>
-                  <div className="text-xs text-gray-500">
+                <div 
+                  key={day} 
+                  onClick={() => handleDayClick(day)}
+                  className={`p-4 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-200 ${
+                    index < days.length - 1 ? 'border-r border-black/20' : ''
+                  } ${
+                    selectedDay === day ? 'bg-black text-white hover:bg-black/90' : ''
+                  }`}
+                >
+                  <div className={`text-sm uppercase font-medium ${
+                    selectedDay === day ? 'text-gray-300' : 'text-gray-600'
+                  }`}>
+                    {day.slice(0, 3)}
+                  </div>
+                  <div className={`text-2xl font-bold ${
+                    selectedDay === day ? 'text-white' : 'text-black'
+                  }`}>
+                    {dayNumbers[index]}
+                  </div>
+                  <div className={`text-xs ${
+                    selectedDay === day ? 'text-gray-300' : 'text-gray-500'
+                  }`}>
                     {weekCalendarEvents[day as keyof typeof weekCalendarEvents]?.length || 0} events
                   </div>
                 </div>
@@ -158,30 +203,43 @@ export default function EventCalendar() {
 
           {/* Calendar Content */}
           <div className="space-y-8">
-            {days.map((day, dayIndex) => (
-              <div key={day} className="border-2 border-black/20 p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
-                <div className="relative z-10">
-                  <div className="flex items-center space-x-2 mb-6">
-                    <h2 className="text-xl sm:text-2xl font-bold text-black">{day.toUpperCase()}</h2>
-                    <span className="text-gray-600 text-sm">Nov {dayNumbers[dayIndex]}</span>
+            {days
+              .filter(day => !selectedDay || selectedDay === day)
+              .map((day, dayIndex) => {
+                const originalIndex = days.indexOf(day);
+                return (
+                  <div key={day} className="border-2 border-black/20 p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
+                    <div className="relative z-10">
+                      <div className="flex items-center space-x-2 mb-6">
+                        <h2 className="text-xl sm:text-2xl font-bold text-black">{day.toUpperCase()}</h2>
+                        <span className="text-gray-600 text-sm">Nov {dayNumbers[originalIndex]}</span>
+                        {selectedDay && (
+                          <button 
+                            onClick={() => setSelectedDay(null)}
+                            className="ml-auto text-xs bg-black text-white px-2 py-1 hover:bg-gray-800 transition-colors"
+                          >
+                            SHOW ALL
+                          </button>
+                        )}
+                      </div>
+                      
+                      <Carousel className="w-full">
+                        <CarouselContent className="-ml-2">
+                          {filteredEvents[day as keyof typeof filteredEvents].map((event) => (
+                            <CarouselItem key={event.id} className="pl-2 md:basis-1/2 lg:basis-1/3">
+                              <div className="p-1">
+                                <EventCard event={event} />
+                              </div>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
+                        <CarouselNext className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
+                      </Carousel>
+                    </div>
                   </div>
-                  
-                  <Carousel className="w-full">
-                    <CarouselContent className="-ml-2">
-                      {weekCalendarEvents[day as keyof typeof weekCalendarEvents].map((event) => (
-                        <CarouselItem key={event.id} className="pl-2 md:basis-1/2 lg:basis-1/3">
-                          <div className="p-1">
-                            <EventCard event={event} />
-                          </div>
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
-                    <CarouselNext className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
-                  </Carousel>
-                </div>
-              </div>
-            ))}
+                );
+              })}
           </div>
 
           {/* Footer CTA */}
@@ -207,6 +265,12 @@ export default function EventCalendar() {
 
 // Event Card Component
 function EventCard({ event }: { event: DisplayEvent }) {
+  const handleRegister = () => {
+    if (event.registrationUrl) {
+      window.open(event.registrationUrl, '_blank');
+    }
+  };
+
   return (
     <div className="bg-white border border-black/30 p-4 h-full flex flex-col justify-between min-h-[200px]">
       <div className="flex-1">
@@ -226,9 +290,25 @@ function EventCard({ event }: { event: DisplayEvent }) {
         </div>
       </div>
       
-      {/* Location */}
-      <div className="text-black text-sm">
-        <span>{event.location}</span>
+      {/* Bottom Section with Location and Link Button */}
+      <div className="flex items-end justify-between">
+        {/* Link Button - Bottom Left */}
+        <div>
+          {event.registrationUrl && (
+            <Button 
+              onClick={handleRegister}
+              variant="outline" 
+              className="border-black text-black hover:bg-black hover:text-white text-xs py-1 px-2 h-auto"
+            >
+              <Link size={14} />
+            </Button>
+          )}
+        </div>
+        
+        {/* Location - Bottom Right */}
+        <div className="text-gray-600 text-xs text-right flex-1 ml-2">
+          <span>{event.location.length > 30 ? `${event.location.substring(0, 30)}...` : event.location}</span>
+        </div>
       </div>
     </div>
   );
