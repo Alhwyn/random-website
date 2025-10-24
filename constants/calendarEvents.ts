@@ -27,8 +27,8 @@ export const calendarEvents: CalendarEvent[] = [
     title: "TENFOLD TALKS",
     description: "Join us for an insightful discussion with industry leaders about the future of technology and innovation.",
     company: "TENFOLD",
-    startDate: "2024-12-15",
-    endDate: "2024-12-15",
+    startDate: "2025-11-17",
+    endDate: "2025-11-17",
     startTime: "18:00",
     endTime: "20:00",
     location: "Victoria Conference Centre",
@@ -41,18 +41,66 @@ export const calendarEvents: CalendarEvent[] = [
         image: "/speakers/1725794919482.jpeg"
       }
     ],
-    registrationUrl: "https://example.com/register/tenfold",
+    registrationUrl: "https://www.tenfoldvictoria.com/",
     isVirtual: false,
     maxAttendees: 150,
     tags: ["technology", "innovation", "networking"]
   },
   {
     id: 2,
+    title: "Tech Meets Talent: Navigating AI in Recruitment",
+    description: "AI is disrupting recruitment for applicants and HR. Come discover the challenges and opportunities in this new era of hiring. UVic's Engineering & Computer Science Co-op team will host a panel of local companies and students.",
+    company: "UVic Engineering & Computer Science Co-op",
+    startDate: "2025-11-18",
+    endDate: "2025-11-18",
+    startTime: "17:00",
+    endTime: "19:00",
+    location: "777 Fort Street, Victoria, BC (Fort Tectoria)",
+    category: "Tech Talk",
+    speakers: [
+      {
+        name: "UVic Co-op Team",
+        role: "Panel Moderators",
+        company: "University of Victoria",
+        image: "/speakers/placeholder.jpeg"
+      }
+    ],
+    registrationUrl: "https://www.eventbrite.hk/e/tech-meets-talent-navigating-ai-in-recruitment-tickets-1839054113359",
+    isVirtual: false,
+    maxAttendees: 100,
+    tags: ["AI", "recruitment", "talent", "tech", "networking", "panel"]
+  },
+  {
+    id: 3,
+    title: "Startup Intro to VC: Guide for Victoria Founders",
+    description: "Learn venture capital basics, meet investors, and get access to 20,000+ investor contacts. This event teaches Victoria startup founders about venture capital and how to secure funding for business growth.",
+    company: "HM Events",
+    startDate: "2025-11-19",
+    endDate: "2025-11-19",
+    startTime: "18:00",
+    endTime: "20:00",
+    location: "Online (Virtual)",
+    category: "Workshop",
+    speakers: [
+      {
+        name: "HM Events Team",
+        role: "VC Education Specialists",
+        company: "HM Events",
+        image: "/speakers/placeholder.jpeg"
+      }
+    ],
+    registrationUrl: "https://www.eventbrite.hk/e/startup-intro-to-vc-guide-for-victoria-founders-tickets-1380172365699",
+    isVirtual: true,
+    maxAttendees: 200,
+    tags: ["startup", "VC", "venture-capital", "funding", "founders", "investors"]
+  },
+  {
+    id: 4,
     title: "Prompt Victoria Conference",
-    description: "A comprehensive conference featuring multiple speakers discussing AI, machine learning, and the future of software development.",
+    description: "A comprehensive conference featuring multiple speakers discussing AI, machine learning, and the future of software development during Victoria Tech Week.",
     company: "VIATEC",
-    startDate: "2024-11-21",
-    endDate: "2024-11-21",
+    startDate: "2025-11-21",
+    endDate: "2025-11-21",
     startTime: "09:00",
     endTime: "17:00",
     location: "Victoria Convention Centre",
@@ -101,45 +149,28 @@ export const calendarEvents: CalendarEvent[] = [
     tags: ["AI", "machine-learning", "software-development", "conference", "networking"]
   },
   {
-    id: 3,
-    title: "Victoria Tech Startup Pitch Night",
-    description: "Local startups pitch their ideas to investors and tech community members.",
-    company: "Victoria Tech Community",
-    startDate: "2024-12-05",
-    endDate: "2024-12-05",
-    startTime: "19:00",
-    endTime: "21:30",
-    location: "Innovation Hub Victoria",
-    category: "Startup Event",
-    speakers: [],
-    registrationUrl: "https://example.com/register/pitch-night",
-    isVirtual: false,
-    maxAttendees: 100,
-    tags: ["startups", "pitching", "investors", "networking"]
-  },
-  {
-    id: 4,
-    title: "Virtual AI Workshop Series",
-    description: "A hands-on workshop series covering practical AI implementation for businesses.",
-    company: "Tech Education Victoria",
-    startDate: "2024-11-28",
-    endDate: "2024-11-30",
-    startTime: "14:00",
-    endTime: "16:00",
-    location: "Online",
-    category: "Workshop",
+    id: 5,
+    title: "Water Connects - Haus of Owl's Projector Club",
+    description: "A multi-sensory installation by Projector Club, part of the CTRL+ART+DREAM series. The experience blends poetry, projection, and water to explore the metaphor of water's memory—carrying stories, loss, and renewal.",
+    company: "Haus of Owl's Projector Club",
+    startDate: "2025-11-14",
+    endDate: "2025-11-20",
+    startTime: "18:00",
+    endTime: "21:00",
+    location: "780 Blanshard Street, Victoria",
+    category: "Art Installation",
     speakers: [
       {
-        name: "Dr. Sarah Chen",
-        role: "AI Research Lead",
-        company: "UVic Computer Science",
+        name: "Joanna Streetly",
+        role: "Poet & Installation Artist",
+        company: "Projector Club",
         image: "/speakers/placeholder.jpeg"
       }
     ],
-    registrationUrl: "https://example.com/register/ai-workshop",
-    isVirtual: true,
+    registrationUrl: "https://www.victoria.ca/community-culture/events/cityvibe-events/haus-owls-projector-club",
+    isVirtual: false,
     maxAttendees: 50,
-    tags: ["AI", "workshop", "hands-on", "business", "virtual"]
+    tags: ["art", "installation", "poetry", "projection", "multi-sensory", "drop-in"]
   }
 ];
 
