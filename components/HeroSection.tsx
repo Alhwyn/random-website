@@ -6,6 +6,13 @@ import { events } from "../constants/events";
 import { sponsors } from "../constants/sponsors";
 import { waveformImage } from "../constants/assets";
 import { StayUpdated } from "./StayUpdated";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Reusable background patterns
 export const BackgroundPattern = ({ className = "" }: { className?: string }) => (
@@ -149,29 +156,70 @@ export function HeroSection() {
                     {event.title}
                   </h3>
                   
-                  {/* Speakers Row */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 max-w-4xl">
-                    {event.speakers.map((speaker, speakerIdx) => (
-                      <div key={speakerIdx} className="group cursor-pointer w-full lg:w-32">
-                        <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
-                          {/* Subtle grid overlay */}
-                          <div className="absolute inset-0 z-10" style={{
-                            backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
-                          }} />
-                          
-                          {/* Speaker image */}
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img 
-                            src={speaker.image}
-                            alt={speaker.name}
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                          />
+                  {/* Speakers Row - Conditional Carousel or Grid */}
+                  {event.useCarousel ? (
+                    <div className="mt-6 sm:mt-8 relative">
+                      <Carousel
+                        opts={{
+                          align: "start",
+                          loop: false,
+                        }}
+                        className="w-full max-w-6xl"
+                      >
+                        <CarouselContent className="-ml-2 md:-ml-4">
+                          {event.speakers.map((speaker, speakerIdx) => (
+                            <CarouselItem key={speakerIdx} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
+                              <div className="group cursor-pointer h-full flex flex-col">
+                                <div className="relative aspect-[3/4] overflow-hidden mb-3 bg-gray-100 border border-black/30 flex-shrink-0">
+                                  {/* Subtle grid overlay */}
+                                  <div className="absolute inset-0 z-10" style={{
+                                    backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
+                                  }} />
+                                  
+                                  {/* Speaker image */}
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img 
+                                    src={speaker.image}
+                                    alt={speaker.name}
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                                  />
+                                </div>
+                                <div className="flex-grow">
+                                  <h4 className="text-black text-sm font-medium leading-tight mb-1">{speaker.name}</h4>
+                                  <p className="text-gray-600 text-xs leading-tight">{speaker.role}</p>
+                                </div>
+                              </div>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="hidden sm:flex -left-4 lg:-left-12 top-[40%] -translate-y-1/2 h-10 w-10 rounded-none border-2 border-black bg-white hover:bg-black hover:text-white transition-colors" />
+                        <CarouselNext className="hidden sm:flex -right-4 lg:-right-12 top-[40%] -translate-y-1/2 h-10 w-10 rounded-none border-2 border-black bg-white hover:bg-black hover:text-white transition-colors" />
+                      </Carousel>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 max-w-4xl">
+                      {event.speakers.map((speaker, speakerIdx) => (
+                        <div key={speakerIdx} className="group cursor-pointer w-full lg:w-32">
+                          <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
+                            {/* Subtle grid overlay */}
+                            <div className="absolute inset-0 z-10" style={{
+                              backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
+                            }} />
+                            
+                            {/* Speaker image */}
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img 
+                              src={speaker.image}
+                              alt={speaker.name}
+                              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                            />
+                          </div>
+                          <h4 className="text-black text-base font-medium">{speaker.name}</h4>
+                          <p className="text-gray-600 text-sm">{speaker.role}</p>
                         </div>
-                        <h4 className="text-black text-base font-medium">{speaker.name}</h4>
-                        <p className="text-gray-600 text-sm">{speaker.role}</p>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

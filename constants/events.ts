@@ -4,6 +4,7 @@ export const events = [
     company: "TENFOLD",
     date: "TO BE ANNOUNCED",
     title: "TENFOLD TALKS",
+    useCarousel: false,
     speakers: [
       {
         name: "Keiver Tremblay",
@@ -17,6 +18,7 @@ export const events = [
     company: "VIATEC",
     date: "NOV 21",
     title: "Prompt Victoria Conference",
+    useCarousel: true,
     speakers: [
       {
         name: "Tim Chipperfield",
@@ -54,11 +56,6 @@ export const events = [
         image: "/speakers/1699722341615.jpeg"
       },
       {
-        name: "Rob Cooper",
-        role: "PlusROI Online Marketing",
-        image: "/speakers/1739033256137.jpeg"
-      },
-      {
         name: "Mike Leslie",
         role: "Revela",
         image: "/speakers/1681967750859.jpeg"
@@ -82,6 +79,46 @@ export const events = [
         name: "Sarah Downey",
         role: "Sarah Downey Consulting",
         image: "/speakers/1743109365510.jpeg"
+      },
+      {
+        name: "Anu Jolliffe",
+        role: "Victoria Data Society & Equifaira Partners Inc.",
+        image: "/speakers/1750437762895.jpeg"
+      },
+      {
+        name: "Michael Harvey",
+        role: "Information and Privacy Commissioner of BC",
+        image: "/speakers/1757009456542.jpeg"
+      },
+      {
+        name: "Matthew Van Heyst",
+        role: "Tecnet",
+        image: "/speakers/1732123591540.jpeg"
+      },
+      {
+        name: "Elaheh Nouri",
+        role: "Tecnet",
+        image: "/speakers/1663688936554.jpeg"
+      },
+      {
+        name: "Alistair Vigier",
+        role: "Caseway",
+        image: "/speakers/1744856576432.jpeg"
+      },
+      {
+        name: "Tisha Becker",
+        role: "FrameBright",
+        image: "/speakers/1713218167838.jpeg"
+      },
+      {
+        name: "René Fournier",
+        role: "R2 Creative",
+        image: "/speakers/1568781626769.jpeg"
+      },
+      {
+        name: "Brad Edwards",
+        role: "Palo Alto Networks",
+        image: "/speakers/1756233921212.jpeg"
       }
     ]
   },
