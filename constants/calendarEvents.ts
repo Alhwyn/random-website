@@ -141,6 +141,48 @@ export const calendarEvents: CalendarEvent[] = [
         role: "Founder",
         company: "Barnacle Systems",
         image: "/speakers/1741227765889.jpeg"
+      },
+      {
+        name: "Tamara Lechner",
+        role: "Founder",
+        company: "World Flourishing Organization",
+        image: "/speakers/1699722341615.jpeg"
+      },
+      {
+        name: "Rob Cooper",
+        role: "Moderator - The Future of Work Panel",
+        company: "PlusROI Online Marketing",
+        image: "/speakers/1739033256137.jpeg"
+      },
+      {
+        name: "Mike Leslie",
+        role: "Panelist - The Future of Work",
+        company: "Revela",
+        image: "/speakers/1681967750859.jpeg"
+      },
+      {
+        name: "Steve Harris",
+        role: "Speaker - AI for Non-Profits",
+        company: "AI4 Enterprise",
+        image: "/speakers/1516273911496.jpeg"
+      },
+      {
+        name: "Julian Daly",
+        role: "Speaker - AI for Non-Profits",
+        company: "Our Place Society",
+        image: "/speakers/Julian-1030x1030-1.jpg"
+      },
+      {
+        name: "Tariq Chatur",
+        role: "Speaker - AI Hacks & Side Quests",
+        company: "",
+        image: "/speakers/1696377510866.jpeg"
+      },
+      {
+        name: "Sarah Downey",
+        role: "Speaker - AI for Non-Profits",
+        company: "Sarah Downey Consulting",
+        image: "/speakers/1743109365510.jpeg"
       }
     ],
     registrationUrl: "https://example.com/register/prompt-victoria",

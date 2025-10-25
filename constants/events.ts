@@ -47,6 +47,41 @@ export const events = [
         name: "Nathaniel Knight",
         role: "Barnacle Systems",
         image: "/speakers/1741227765889.jpeg"
+      },
+      {
+        name: "Tamara Lechner",
+        role: "World Flourishing Organization",
+        image: "/speakers/1699722341615.jpeg"
+      },
+      {
+        name: "Rob Cooper",
+        role: "PlusROI Online Marketing",
+        image: "/speakers/1739033256137.jpeg"
+      },
+      {
+        name: "Mike Leslie",
+        role: "Revela",
+        image: "/speakers/1681967750859.jpeg"
+      },
+      {
+        name: "Steve Harris",
+        role: "AI4 Enterprise",
+        image: "/speakers/1516273911496.jpeg"
+      },
+      {
+        name: "Julian Daly",
+        role: "Our Place Society",
+        image: "/speakers/Julian-1030x1030-1.jpg"
+      },
+      {
+        name: "Tariq Chatur",
+        role: "Speaker",
+        image: "/speakers/1696377510866.jpeg"
+      },
+      {
+        name: "Sarah Downey",
+        role: "Sarah Downey Consulting",
+        image: "/speakers/1743109365510.jpeg"
       }
     ]
   },
