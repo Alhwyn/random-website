@@ -15,7 +15,7 @@ export function StayUpdated() {
 
     setIsSubmitting(true);
     
-    // Simulate API call - replace with your actual newsletter signup logic
+    
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     setSubmitted(true);
