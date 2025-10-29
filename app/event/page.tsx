@@ -205,7 +205,7 @@ export default function EventCalendar() {
                     <span className="text-base font-medium">All Days</span>
                   </div>
                 </SelectItem>
-                {days.map((day, index) => {
+                {days.map((day) => {
                   const eventCount = weekCalendarEvents[day as keyof typeof weekCalendarEvents]?.length || 0;
                   return (
                     <SelectItem key={day} value={day} className="hover:bg-gray-100 py-3">
@@ -257,7 +257,7 @@ export default function EventCalendar() {
           <div className="space-y-8">
             {days
               .filter(day => !selectedDay || selectedDay === day)
-              .map((day, dayIndex) => {
+              .map((day) => {
                 const originalIndex = days.indexOf(day);
                 return (
                   <div key={day} className="border-2 border-black/20 p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>

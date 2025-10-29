@@ -41,7 +41,7 @@ export function StayUpdated() {
           message: data.error ?? "Something went wrong. Please try again.",
         });
       } 
-    } catch (error) {
+    } catch {
       setFeedback({
         type: "error",
         message: "Network error. Please try again.",

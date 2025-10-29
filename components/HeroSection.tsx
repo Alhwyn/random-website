@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { events } from "../constants/events";
 import { sponsors } from "../constants/sponsors";
@@ -164,10 +165,12 @@ export function HeroSection() {
                                     <div className="absolute inset-0 z-10" style={{
                                       backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
                                     }} />
-                                    <img 
+                                    <Image 
                                       src={speaker.image}
                                       alt={speaker.name}
-                                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                                      fill
+                                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 128px"
+                                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                                     />
                                   </div>
                                   <h4 className="text-black text-base font-medium">{speaker.name}</h4>
@@ -193,10 +196,12 @@ export function HeroSection() {
                             
                             {/* Speaker image */}
                             
-                            <img 
+                            <Image 
                               src={speaker.image}
                               alt={speaker.name}
-                              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                              fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 128px"
+                              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                             />
                           </div>
                           <h4 className="text-black text-base font-medium">{speaker.name}</h4>
