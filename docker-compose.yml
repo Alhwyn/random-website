@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: victoria-tech-db
+    environment:
+      POSTGRES_USER: ${DB_USER:?Error: DB_USER must be set in .env.local}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Error: DB_PASSWORD must be set in .env.local}
+      POSTGRES_DB: ${DB_NAME:-victoriatech}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+

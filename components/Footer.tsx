@@ -67,13 +67,6 @@ export function Footer() {
             </span>
           </Button>
         </div>
-
-        {/* Additional info */}
-        <div className="text-center">
-          <p className="text-xs text-stone-400/80 mb-2 px-2">
-            Every Tuesday at 6PM • Victoria&apos;s Tech Community
-          </p>
-        </div>
       </div>
     </footer>
   );

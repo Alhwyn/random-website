@@ -7,30 +7,57 @@ import { useState } from "react";
 export function StayUpdated() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [feedback, setFeedback] = useState<
+    { type: "success" | "error"; message: string }
+    | null
+  >(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setIsSubmitting(true);
-    
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setSubmitted(true);
-    setIsSubmitting(false);
-    setEmail("");
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000);
+    setFeedback(null);
+    try {
+
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "homepage" }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setFeedback({
+          type: "success",
+          message: data.message ?? "Thanks! We'll keep you updated.",
+        });
+        setEmail("");
+        setTimeout(() => setFeedback(null), 3000);
+      } else {
+        setFeedback({
+          type: "error",
+          message: data.error ?? "Something went wrong. Please try again.",
+        });
+      } 
+    } catch (error) {
+      setFeedback({
+        type: "error",
+        message: "Network error. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+
+
   };
 
-  if (submitted) {
+  if (feedback?.type === "success") {
     return (
       <div className="flex flex-col sm:flex-row max-w-md mx-auto sm:mx-0">
         <div className="flex items-center justify-center bg-green-50 border border-green-200 text-green-800 px-4 py-2 text-sm rounded-none text-center w-full">
-          ✓ Thanks! We&apos;ll keep you updated
+          {feedback.message}
         </div>
       </div>
     );
@@ -38,6 +65,11 @@ export function StayUpdated() {
 
   return (
     <div className="space-y-3 flex justify-center sm:justify-start">
+      {feedback?.type === "error" && (
+        <p className="text-sm text-red-600 text-center sm:text-left">
+          {feedback.message}
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row max-w-md gap-2 sm:gap-0 w-full">
         <Input
           type="email"
