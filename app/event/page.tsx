@@ -2,6 +2,13 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { BackgroundPattern } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -13,7 +20,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { calendarEvents, CalendarEvent } from "@/constants/calendarEvents";
-import { Link } from "lucide-react";
+import { Link, MapPin } from "lucide-react";
 
 // Type definitions for the calendar display
 interface DisplayEvent {
@@ -169,7 +176,52 @@ export default function EventCalendar() {
           </div>
 
           {/* Calendar Days Header */}
-          <div className="border-2 border-black/20 bg-gray-100 mb-8">
+          {/* Mobile Dropdown */}
+          <div className="md:hidden border-2 border-black/20 bg-gray-100 mb-8 p-4">
+            <label className="text-sm text-gray-600 font-medium mb-2 block">
+              SELECT A DAY
+            </label>
+            <Select
+              value={selectedDay || 'all'}
+              onValueChange={(value) => setSelectedDay(value === 'all' ? null : value)}
+            >
+              <SelectTrigger className="w-full border-black/20 bg-white text-black rounded-none h-12 focus:ring-2 focus:ring-black/20 text-base font-medium">
+                <SelectValue placeholder="Select a day">
+                  {selectedDay ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-600">{selectedDay.slice(0, 3).toUpperCase()}</span>
+                      <span className="text-sm text-gray-500">
+                        {weekCalendarEvents[selectedDay as keyof typeof weekCalendarEvents]?.length || 0} events
+                      </span>
+                    </div>
+                  ) : (
+                    "All Days"
+                  )}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent className="bg-white border-black/20 rounded-none">
+                <SelectItem value="all" className="hover:bg-gray-100 py-3">
+                  <div className="flex items-center w-full">
+                    <span className="text-base font-medium">All Days</span>
+                  </div>
+                </SelectItem>
+                {days.map((day, index) => {
+                  const eventCount = weekCalendarEvents[day as keyof typeof weekCalendarEvents]?.length || 0;
+                  return (
+                    <SelectItem key={day} value={day} className="hover:bg-gray-100 py-3">
+                      <div className="flex items-center gap-3 w-full">
+                        <span className="text-sm font-medium text-gray-600 w-8">{day.slice(0, 3).toUpperCase()}</span>
+                        <span className="text-sm text-gray-500 ml-auto">{eventCount} events</span>
+                      </div>
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden md:block border-2 border-black/20 bg-gray-100 mb-8">
             <div className="grid grid-cols-5 gap-0">
               {days.map((day, index) => (
                 <div 
@@ -178,11 +230,11 @@ export default function EventCalendar() {
                   className={`p-4 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-200 ${
                     index < days.length - 1 ? 'border-r border-black/20' : ''
                   } ${
-                    selectedDay === day ? 'bg-black text-white hover:bg-black/90' : ''
+                    selectedDay === day ? 'bg-[#484848] text-white hover:bg-[#3c3c3c]' : ''
                   }`}
                 >
                   <div className={`text-sm uppercase font-medium ${
-                    selectedDay === day ? 'text-gray-300' : 'text-gray-600'
+                    selectedDay === day ? 'text-gray-200' : 'text-gray-600'
                   }`}>
                     {day.slice(0, 3)}
                   </div>
@@ -192,7 +244,7 @@ export default function EventCalendar() {
                     {dayNumbers[index]}
                   </div>
                   <div className={`text-xs ${
-                    selectedDay === day ? 'text-gray-300' : 'text-gray-500'
+                    selectedDay === day ? 'text-gray-200' : 'text-gray-500'
                   }`}>
                     {weekCalendarEvents[day as keyof typeof weekCalendarEvents]?.length || 0} events
                   </div>
@@ -233,8 +285,8 @@ export default function EventCalendar() {
                             </CarouselItem>
                           ))}
                         </CarouselContent>
-                        <CarouselPrevious className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
-                        <CarouselNext className="border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
+                        <CarouselPrevious className="hidden md:inline-flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
+                        <CarouselNext className="hidden md:inline-flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
                       </Carousel>
                     </div>
                   </div>
@@ -272,43 +324,34 @@ function EventCard({ event }: { event: DisplayEvent }) {
   };
 
   return (
-    <div className="bg-white border border-black/30 p-4 h-full flex flex-col justify-between min-h-[200px]">
-      <div className="flex-1">
-        {/* Time */}
-        <div className="border border-black/30 text-black text-sm px-2 py-1 mb-3 inline-block">
+    <div className="bg-white border border-black/20 shadow-sm p-6 h-full flex flex-col gap-4">
+      <div className="flex items-start justify-between gap-3">
+        <div className="inline-flex items-center border border-black/20 bg-gray-100 px-3 py-1 text-xs font-medium tracking-wide text-gray-700">
           {event.time}
         </div>
-        
-        {/* Event Title */}
-        <h3 className="text-black font-semibold mb-3 text-sm leading-tight">
+        {event.registrationUrl && (
+          <Button
+            onClick={handleRegister}
+            variant="outline"
+            className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white text-xs py-1 px-2 h-auto"
+          >
+            <Link size={14} />
+          </Button>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-black leading-tight">
           {event.title}
         </h3>
-        
-        {/* Speaker */}
-        <div className="mb-3">
-          <span className="text-black text-sm">{event.speaker.name}</span>
-        </div>
+        <p className="text-sm text-gray-600">
+          {event.speaker.name}
+        </p>
       </div>
-      
-      {/* Bottom Section with Location and Link Button */}
-      <div className="flex items-end justify-between">
-        {/* Link Button - Bottom Left */}
-        <div>
-          {event.registrationUrl && (
-            <Button 
-              onClick={handleRegister}
-              variant="outline" 
-              className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white text-xs py-1 px-2 h-auto"
-            >
-              <Link size={14} />
-            </Button>
-          )}
-        </div>
-        
-        {/* Location - Bottom Right */}
-        <div className="text-gray-600 text-xs text-right flex-1 ml-2">
-          <span>{event.location.length > 30 ? `${event.location.substring(0, 30)}...` : event.location}</span>
-        </div>
+
+      <div className="mt-auto pt-4 border-t border-black/10 text-sm text-gray-600 flex items-center gap-2">
+        <MapPin size={14} className="text-gray-500" />
+        <span>{event.location.length > 45 ? `${event.location.substring(0, 45)}...` : event.location}</span>
       </div>
     </div>
   );

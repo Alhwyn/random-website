@@ -212,8 +212,8 @@ export function HeroSection() {
             {/* Show More Events Button */}
             <div className="text-center mt-8 sm:mt-12">
               <Button 
-                variant="default"
-                className="bg-white text-[#484848] hover:bg-[#484848] hover:text-white border-2 border-[#484848] px-8 py-3 text-sm font-medium"
+                variant="outline"
+                className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white px-8 py-3 text-sm font-medium"
                 onClick={() => window.location.href = '/event'}
               >
                 SHOW MORE EVENTS
