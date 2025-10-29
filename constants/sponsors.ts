@@ -1,4 +1,9 @@
-export const sponsors = {
-  platinum: ["HSBC", "IBM", "Deloitte", "Accenture", "PwC"],
-  gold: ["Anthropic", "Atlassian", "AWS", "Deel", "Goodyear"]
-};
+export const sponsors = [
+  "UVIC", 
+  "CURSOR", 
+  "ELASTIC ENERGY", 
+  "VIATEC",
+  "WORKDAY", 
+  "VICTORIA DATA SOCIETY", 
+  "TENFOLD"
+];

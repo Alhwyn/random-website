@@ -211,12 +211,12 @@ export default function EventCalendar() {
                   <div key={day} className="border-2 border-black/20 p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
                     <div className="relative z-10">
                       <div className="flex items-center space-x-2 mb-6">
-                        <h2 className="text-xl sm:text-2xl font-bold text-black">{day.toUpperCase()}</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold text-[#484848]">{day.toUpperCase()}</h2>
                         <span className="text-gray-600 text-sm">Nov {dayNumbers[originalIndex]}</span>
                         {selectedDay && (
                           <button 
                             onClick={() => setSelectedDay(null)}
-                            className="ml-auto text-xs bg-black text-white px-2 py-1 hover:bg-gray-800 transition-colors"
+                            className="ml-auto text-xs bg-white text-[#484848] border border-[#484848] px-2 py-1 hover:bg-[#484848] hover:text-white transition-colors"
                           >
                             SHOW ALL
                           </button>
@@ -245,11 +245,11 @@ export default function EventCalendar() {
           {/* Footer CTA */}
           <div className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
             <div className="relative z-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-black">Want to host an event?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-[#484848]">Want to host an event?</h3>
               <p className="text-gray-600 text-sm sm:text-base mb-6">Submit your event to be featured in Victoria Tech Week</p>
               <Button 
                 variant="outline" 
-                className="border-black text-black hover:bg-black hover:text-white"
+                className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white"
                 onClick={() => window.location.href = 'mailto:alhwyn@alhwyn.com?subject=Host an Event at Victoria Tech Week'}
               >
                 SUBMIT EVENT
@@ -298,7 +298,7 @@ function EventCard({ event }: { event: DisplayEvent }) {
             <Button 
               onClick={handleRegister}
               variant="outline" 
-              className="border-black text-black hover:bg-black hover:text-white text-xs py-1 px-2 h-auto"
+              className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white text-xs py-1 px-2 h-auto"
             >
               <Link size={14} />
             </Button>

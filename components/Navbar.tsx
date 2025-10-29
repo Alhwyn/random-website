@@ -78,7 +78,7 @@ export function Navbar() {
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToPage('/event')}
-              className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
+              className="w-full text-center py-6 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               EVENTS
             </button>
@@ -88,7 +88,7 @@ export function Navbar() {
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
-              className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
+              className="w-full text-center py-6 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               SPONSOR
             </button>
@@ -98,7 +98,7 @@ export function Navbar() {
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
-              className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
+              className="w-full text-center py-6 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               HOST EVENT
             </button>
@@ -108,7 +108,7 @@ export function Navbar() {
           <div className="flex-1">
             <button 
               onClick={() => navigateToMainPageSection('contact')}
-              className="w-full text-center py-6 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
+              className="w-full text-center py-6 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               CONTACT
             </button>
@@ -144,25 +144,25 @@ export function Navbar() {
           <div className={`${isMenuOpen ? 'block' : 'hidden'} border-t-2 border-black/20 bg-white`}>
             <button 
               onClick={() => navigateToPage('/event')}
-              className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
+              className="w-full text-left px-4 py-4 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               EVENTS
             </button>
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
-              className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
+              className="w-full text-left px-4 py-4 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               SPONSOR
             </button>
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
-              className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
+              className="w-full text-left px-4 py-4 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm border-b border-black/10"
             >
               HOST EVENT
             </button>
             <button 
               onClick={() => navigateToMainPageSection('contact')}
-              className="w-full text-left px-4 py-4 text-black hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
+              className="w-full text-left px-4 py-4 text-[#484848] hover:bg-gray-50 transition-colors font-medium tracking-wider text-sm"
             >
               CONTACT
             </button>
