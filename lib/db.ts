@@ -13,15 +13,32 @@ import { Pool, PoolConfig } from 'pg';
 const getPoolConfig = (): PoolConfig => {
     // Option 1: Use connection string (Railway/Production)
     if (process.env.DATABASE_URL) {
+        // Determine SSL configuration based on environment variables
+        let sslConfig: boolean | { rejectUnauthorized: boolean } = false;
+        
+        // Only enable SSL if explicitly requested via DATABASE_SSL=true
+        if (process.env.DATABASE_SSL === 'true') {
+            sslConfig = {
+                rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== 'false'
+            };
+        } else if (process.env.DATABASE_SSL === 'false') {
+            sslConfig = false;
+        } else if (process.env.NODE_ENV === 'production') {
+            // In production, try to determine from DATABASE_URL
+            // If URL contains sslmode parameter, don't override it
+            if (process.env.DATABASE_URL.includes('sslmode=')) {
+                sslConfig = false; // Let the connection string handle SSL
+            } else {
+                // Default to SSL in production, but allow self-signed certs
+                sslConfig = {
+                    rejectUnauthorized: false
+                };
+            }
+        }
+        
         return {
             connectionString: process.env.DATABASE_URL,
-            // SSL configuration for production
-            // Note: If you have a proper SSL certificate, set rejectUnauthorized to true
-            ssl: process.env.NODE_ENV === 'production' 
-                ? { 
-                    rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== 'false'
-                }
-                : false,
+            ssl: sslConfig,
             // Connection pool limits
             max: 20, // Maximum number of clients in the pool
             idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
