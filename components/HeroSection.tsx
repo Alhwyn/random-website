@@ -146,8 +146,8 @@ export function HeroSection() {
                   
                   {/* Speakers Row - Conditional Carousel or Grid */}
                   {event.useCarousel ? (
-                    <div className="mt-6 sm:mt-8">
-                      <div className="relative">
+                    <div className="mt-6 sm:mt-8 min-h-[350px] flex items-center">
+                      <div className="relative w-full">
                         <Carousel
                           opts={{
                             align: "start",
@@ -176,8 +176,8 @@ export function HeroSection() {
                               </CarouselItem>
                             ))}
                           </CarouselContent>
-                          <CarouselPrevious className="hidden md:flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
-                          <CarouselNext className="hidden md:flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none" />
+                          <CarouselPrevious className="hidden md:flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none !top-[calc(50%-85px)] !-translate-y-0" />
+                          <CarouselNext className="hidden md:flex border border-black/30 hover:bg-black hover:text-white size-10 rounded-none !top-[calc(50%-85px)] !-translate-y-0" />
                         </Carousel>
                       </div>
                     </div>
@@ -239,13 +239,6 @@ export function HeroSection() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 text-[#484848] font-bold">
               WANT TO HOST AN EVENT OR SPONSOR?
             </h2>
-
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
-              Join Victoria Tech Week by hosting your own event. Connect with founders, investors, and innovators in our thriving tech community.
-            </p>
-            
- 
-
             <Button 
               variant="outline" 
               className="border-[#484848] text-[#484848] hover:bg-[#484848] hover:text-white"

@@ -278,8 +278,8 @@ export default function EventCalendar() {
                       <Carousel className="w-full">
                         <CarouselContent className="-ml-2">
                           {filteredEvents[day as keyof typeof filteredEvents].map((event) => (
-                            <CarouselItem key={event.id} className="pl-2 md:basis-1/2 lg:basis-1/3">
-                              <div className="p-1">
+                            <CarouselItem key={event.id} className="pl-2 md:basis-1/2 lg:basis-1/3 flex">
+                              <div className="p-1 h-full w-full">
                                 <EventCard event={event} />
                               </div>
                             </CarouselItem>

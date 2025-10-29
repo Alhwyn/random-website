@@ -112,6 +112,30 @@ export const calendarEvents: CalendarEvent[] = [
     tags: ["AI", "machine-learning", "software-development", "conference", "networking"]
   },
   {
+    id: 7,
+    title: "Supabase Meetup",
+    description: "Connect with the Supabase community in Victoria for networking, talks, and local collaboration opportunities.",
+    company: "Supabase Community Events",
+    startDate: "2025-11-19",
+    endDate: "2025-11-19",
+    startTime: "10:00",
+    endTime: "11:00",
+    location: "Victoria, British Columbia",
+    category: "Meetup",
+    speakers: [
+      {
+        name: "Keiver Tremblay",
+        role: "Host",
+        company: "Supabase",
+        image: "/speakers/placeholder.jpeg"
+      }
+    ],
+    registrationUrl: "https://luma.com/zh2iwgt5?tk=ue5CRD",
+    isVirtual: false,
+    maxAttendees: 100,
+    tags: ["supabase", "community", "meetup", "networking", "victoria"]
+  },
+  {
     id: 5,
     title: "Water Connects - Haus of Owl's Projector Club",
     description: "A multi-sensory installation by Projector Club, part of the CTRL+ART+DREAM series. The experience blends poetry, projection, and water to explore the metaphor of water's memory—carrying stories, loss, and renewal.",
