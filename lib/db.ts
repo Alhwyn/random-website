@@ -56,18 +56,27 @@ const getPoolConfig = (): PoolConfig => {
     };
 };
 
-const pool = new Pool(getPoolConfig());
+let pool: Pool | null = null;
 
-pool.on('error', (err: Error) => {
-    console.error('Unexpected error on idle database client:', {
-        timestamp: new Date().toISOString(),
-        message: err.message,
-    });
-    if (process.env.NODE_ENV !== 'production') {
-        process.exit(-1);
+const getPool = (): Pool => {
+    if (!pool) {
+        pool = new Pool(getPoolConfig());
+        
+        pool.on('error', (err: Error) => {
+            console.error('Unexpected error on idle database client:', {
+                timestamp: new Date().toISOString(),
+                message: err.message,
+            });
+            if (process.env.NODE_ENV !== 'production') {
+                process.exit(-1);
+            }
+        });
     }
-});
+    return pool;
+};
 
-export const query = (text: string, params?: unknown[]) => pool.query(text, params);
+export const query = (text: string, params?: unknown[]) => {
+    return getPool().query(text, params);
+};
 
-export { pool };
+export { getPool as pool };
