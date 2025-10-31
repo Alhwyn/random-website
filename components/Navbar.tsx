@@ -15,41 +15,35 @@ export function Navbar() {
         block: 'start'
       });
     }
-    setIsMenuOpen(false); // Close menu after clicking
+    setIsMenuOpen(false);
   };
 
   const navigateToPage = (path: string) => {
     router.push(path);
-    setIsMenuOpen(false); // Close menu after clicking
+    setIsMenuOpen(false);
   };
 
   const navigateToMainPageSection = (sectionId: string) => {
-    // If we're already on the main page, just scroll to the section
     if (window.location.pathname === '/') {
       scrollToSection(sectionId);
     } else {
-      // Navigate to main page with hash
       router.push(`/#${sectionId}`);
     }
     setIsMenuOpen(false);
   };
 
-  // Handle scrolling to section when page loads with hash
   useEffect(() => {
     const handleHashScroll = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash) {
-        // Small delay to ensure page has loaded
         setTimeout(() => {
           scrollToSection(hash);
         }, 100);
       }
     };
 
-    // Handle initial load
     handleHashScroll();
     
-    // Handle hash changes
     window.addEventListener('hashchange', handleHashScroll);
     
     return () => {
@@ -60,9 +54,7 @@ export function Navbar() {
   return (
     <nav className="bg-white border-b-2 border-black/20 sticky top-0 z-50">
       <div className="w-full">
-        {/* Desktop Navigation */}
         <div className="hidden md:flex">
-          {/* Victoria Tech Week - Branded Section */}
           <div className="bg-white text-black border-r-2 border-black/20 min-w-[200px]">
             <button 
               onClick={() => navigateToPage('/')}
@@ -74,7 +66,6 @@ export function Navbar() {
             </button>
           </div>
           
-          {/* EVENTS */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToPage('/event')}
@@ -84,7 +75,6 @@ export function Navbar() {
             </button>
           </div>
           
-          {/* SPONSOR */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
@@ -94,7 +84,6 @@ export function Navbar() {
             </button>
           </div>
           
-          {/* HOST EVENT */}
           <div className="flex-1 border-r-2 border-black/20">
             <button 
               onClick={() => navigateToMainPageSection('sponsor')}
@@ -104,7 +93,6 @@ export function Navbar() {
             </button>
           </div>
           
-          {/* CONTACT */}
           <div className="flex-1">
             <button 
               onClick={() => navigateToMainPageSection('contact')}
@@ -115,10 +103,8 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden">
           <div className="flex items-center justify-between px-4 py-3">
-            {/* Brand */}
             <button 
               onClick={() => navigateToPage('/')}
               className="font-bold text-sm leading-tight hover:text-gray-600 transition-colors"
@@ -126,7 +112,6 @@ export function Navbar() {
               Victoria Tech Week
             </button>
             
-            {/* Hamburger Menu Button */}
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-black hover:bg-gray-50 transition-colors"
@@ -140,7 +125,6 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Menu Dropdown */}
           <div className={`${isMenuOpen ? 'block' : 'hidden'} border-t-2 border-black/20 bg-white`}>
             <button 
               onClick={() => navigateToPage('/event')}
