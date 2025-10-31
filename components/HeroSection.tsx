@@ -89,13 +89,10 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Sponsors Carousel - At Absolute Bottom of Hero Container */}
           <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-black/20 overflow-hidden">
-            {/* Gradient fade edges */}
             <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
             
-            {/* Scrolling content */}
             <div className="sponsors-carousel items-center text-sm md:text-base whitespace-nowrap relative z-20 py-6">
               {Array.from({ length: 4 }).map((_, setIndex) => (
                 <React.Fragment key={`sponsor-set-${setIndex}`}>
@@ -110,9 +107,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Featured Events Section */}
         <div id="events" className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: '#f1f1f1' }}>
-          {/* Bob.png background for Featured Events */}
           <div 
             className="absolute inset-0 opacity-5"
             style={{
@@ -131,7 +126,6 @@ export function HeroSection() {
             <div className="space-y-12 sm:space-y-16">
               {events.map((event) => (
                 <div key={event.id} className="space-y-4 sm:space-y-6">
-                  {/* Event Header */}
                   <div className="border border-black/30 px-3 sm:px-4 py-2 inline-block">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm">
                       <span className="text-black font-medium">{event.company}</span>
@@ -140,12 +134,10 @@ export function HeroSection() {
                     </div>
                   </div>
                   
-                  {/* Event Title */}
                   <h3 className="text-2xl sm:text-3xl md:text-4xl text-[#484848] leading-tight max-w-4xl font-bold">
                     {event.title}
                   </h3>
                   
-                  {/* Speakers Row - Conditional Carousel or Grid */}
                   {event.useCarousel ? (
                     <div className="mt-6 sm:mt-8 min-h-[350px] flex items-center">
                       <div className="relative w-full">
@@ -161,7 +153,6 @@ export function HeroSection() {
                               <CarouselItem key={speakerIdx} className="pr-1.5 sm:pr-2 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-auto">
                                 <div className="group cursor-pointer w-full lg:w-32">
                                   <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
-                                    {/* Subtle grid overlay */}
                                     <div className="absolute inset-0 z-10" style={{
                                       backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
                                     }} />
@@ -189,12 +180,10 @@ export function HeroSection() {
                       {event.speakers.map((speaker, speakerIdx) => (
                         <div key={speakerIdx} className="group cursor-pointer w-full lg:w-32">
                           <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gray-100 border border-black/30">
-                            {/* Subtle grid overlay */}
                             <div className="absolute inset-0 z-10" style={{
                               backgroundImage: "repeating-linear-gradient(0deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px),repeating-linear-gradient(90deg,transparent 0px,transparent 2px,rgba(255, 255, 255, 0.1) 2px,rgba(255, 255, 255, 0.1) 3px)"
                             }} />
                             
-                            {/* Speaker image */}
                             
                             <Image 
                               src={speaker.image}
@@ -213,8 +202,7 @@ export function HeroSection() {
                 </div>
               ))}
             </div>
-            
-            {/* Show More Events Button */}
+          
             <div className="text-center mt-8 sm:mt-12">
               <Button 
                 variant="outline"
@@ -227,9 +215,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Host Event Section */}
         <div id="sponsor" className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
-          {/* Sponsor.png background */}
           <div 
             className="absolute inset-0 opacity-20"
             style={{

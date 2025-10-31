@@ -22,7 +22,6 @@ import {
 import { calendarEvents, CalendarEvent } from "@/constants/calendarEvents";
 import { Link, MapPin } from "lucide-react";
 
-// Type definitions for the calendar display
 interface DisplayEvent {
   id: string;
   time: string;
@@ -37,7 +36,6 @@ interface DisplayEvent {
   registrationUrl?: string;
 }
 
-// Transform imported calendar events to display format
 const transformCalendarEvent = (event: CalendarEvent): DisplayEvent => {
   const getCategoryColor = (category: string) => {
     switch (category.toLowerCase()) {
@@ -57,7 +55,6 @@ const transformCalendarEvent = (event: CalendarEvent): DisplayEvent => {
   };
 
   const formatTime = (time: string) => {
-    // Convert 24-hour format to 12-hour format
     const [hours, minutes] = time.split(':');
     const hour = parseInt(hours);
     const ampm = hour >= 12 ? 'p.m.' : 'a.m.';
@@ -80,10 +77,8 @@ const transformCalendarEvent = (event: CalendarEvent): DisplayEvent => {
   };
 };
 
-// Create display events from imported calendar events
 const displayEvents = calendarEvents.map(transformCalendarEvent);
 
-// Organize events by days (using Victoria Tech Week dates: Nov 17-21, 2025)
 const weekCalendarEvents = {
   Monday: displayEvents.filter(event => {
     const originalEvent = calendarEvents.find(e => e.id.toString() === event.id);
@@ -117,7 +112,6 @@ export default function EventCalendar() {
     setSelectedDay(selectedDay === day ? null : day);
   };
 
-  // Filter events based on selected day
   const getFilteredEvents = () => {
     if (!selectedDay) return weekCalendarEvents;
     
@@ -142,9 +136,7 @@ export default function EventCalendar() {
         <BackgroundPattern />
 
         <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          {/* Header Section */}
           <div className="border-2 border-black/20 p-4 sm:p-8 md:p-12 mb-8 relative overflow-hidden bg-white">
-            {/* Full Page Background Image */}
             <div 
               className="absolute inset-0 w-full h-full opacity-30"
               style={{
@@ -156,7 +148,6 @@ export default function EventCalendar() {
               }}
             />
             
-            {/* Additional background fill for any gaps */}
             <div 
               className="absolute inset-0 w-full h-full opacity-20"
               style={{
@@ -167,7 +158,6 @@ export default function EventCalendar() {
               }}
             />
             
-            {/* Content with z-index */}
             <div className="relative z-10 text-center">
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight font-bold text-[#484848]">
                 EVENTS
@@ -175,8 +165,6 @@ export default function EventCalendar() {
             </div>
           </div>
 
-          {/* Calendar Days Header */}
-          {/* Mobile Dropdown */}
           <div className="md:hidden border-2 border-black/20 bg-gray-100 mb-8 p-4">
             <label className="text-sm text-gray-600 font-medium mb-2 block">
               SELECT A DAY
@@ -220,7 +208,6 @@ export default function EventCalendar() {
             </Select>
           </div>
 
-          {/* Desktop Grid */}
           <div className="hidden md:block border-2 border-black/20 bg-gray-100 mb-8">
             <div className="grid grid-cols-5 gap-0">
               {days.map((day, index) => (
@@ -253,7 +240,6 @@ export default function EventCalendar() {
             </div>
           </div>
 
-          {/* Calendar Content */}
           <div className="space-y-8">
             {days
               .filter(day => !selectedDay || selectedDay === day)
@@ -294,7 +280,6 @@ export default function EventCalendar() {
               })}
           </div>
 
-          {/* Footer CTA */}
           <div className="border-2 border-black/20 text-black p-4 sm:p-8 md:p-12 relative mt-8 overflow-hidden bg-white">
             <div className="relative z-10 text-center">
               <h3 className="text-xl sm:text-2xl font-bold mb-4 text-[#484848]">Want to host an event?</h3>
@@ -315,7 +300,6 @@ export default function EventCalendar() {
   );
 }
 
-// Event Card Component
 function EventCard({ event }: { event: DisplayEvent }) {
   const handleRegister = () => {
     if (event.registrationUrl) {

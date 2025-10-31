@@ -106,7 +106,7 @@ export const calendarEvents: CalendarEvent[] = [
     location: "Victoria Convention Centre",
     category: "Conference",
     speakers: [],
-    registrationUrl: "https://example.com/register/prompt-victoria",
+    registrationUrl: "https://members.viatec.ca/event-calendar/Details/prompt-victoria-ai-conference-1447264?sourceTypeId=Hub",
     isVirtual: false,
     maxAttendees: 300,
     tags: ["AI", "machine-learning", "software-development", "conference", "networking"]
